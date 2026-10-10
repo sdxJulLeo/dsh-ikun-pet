@@ -1,0 +1,8 @@
+# 所有文本一律以 LF 存进仓库、以 LF 检出：client bundle 的 banner/footer 断言、
+# 以及 CI（Linux）与本地（Windows）之间的一致性都靠这一条保证。
+* text=auto eol=lf
+
+# 二进制素材不能被当文本处理，否则会被换行转换毁掉。
+*.webp binary
+*.mp3  binary
+*.png  binary

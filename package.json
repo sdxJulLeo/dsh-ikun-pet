@@ -1,0 +1,39 @@
+{
+  "name": "dsh-ikun-pet",
+  "version": "3.0.0",
+  "description": "IKUN 桌宠 —— 一张立绘 + 七套 CSS 动作 + 气泡，在 DSH Web GUI 右下角跟着 Agent 的工作状态动起来，任务完成时喊「你干嘛~」",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "desktop-pet",
+    "ikun"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": []
+    }
+  },
+  "files": [
+    "lib/index.js",
+    "lib/client.js",
+    "assets/*.webp",
+    "assets/voice.mp3",
+    "preview",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ]
+}

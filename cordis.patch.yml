@@ -1,0 +1,8 @@
+# IKUN 桌宠的 bundle 补丁：把自己插进 profile 的插件树。
+# 插件树里的这一行同时是两件事的入口——
+#   Host 半：lib/index.js 在进程里跑，注册 /ikun-pet/* 路由并观察 Agent 活动；
+#   Client 半：dsh.client 让 ClientModuleRegistry 扫描到 lib/client.js 并注入页面。
+# 全部可调项都在 lib/index.js 顶部的 DEFAULTS 里，需要覆盖时在这里加 config:。
+- insert:
+    - id: ikun-pet
+      name: dsh-ikun-pet

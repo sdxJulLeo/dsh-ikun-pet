@@ -1,0 +1,28 @@
+name: test
+
+# 两个自检脚本都零依赖（只用 Node 内建模块），所以这里不需要 pnpm install，
+# 也不用碰任何 registry —— CI 只负责证明这套断言在干净环境里真的能跑。
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['22', '24']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Host 半（包契约 / 状态机 / 路由 / 素材降级）
+        run: node test/selftest.mjs
+
+      - name: Client 半（最小 React 运行时真跑一遍 bundle）
+        run: node test/client-render.test.mjs
